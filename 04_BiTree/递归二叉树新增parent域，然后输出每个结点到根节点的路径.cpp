@@ -107,7 +107,7 @@ void Track(BiTree T){
     while(p){
         cout << p->data;
         if(p->parent)
-            cout << "<-";
+            cout << "->";
         else
             cout << endl;
         p = p->parent; 
