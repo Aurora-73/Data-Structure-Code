@@ -118,7 +118,7 @@ int SiCount2(BiTree T){
 }
 
 int Depth(BiTree T){
-     return (T ? (Depth(T->lchild) >  Depth(T->rchild) ? Depth(T->lchild) : Depth(T->rchild) )+ 1 : 0);
+     return (T ? (Depth(T->lchild) >  Depth(T->rchild) ? Depth(T->lchild) : Depth(T->rchild)) + 1 : 0);
 }//抽象
 
 //叶子节点既可以return 0; 也可以SiCount1(T->lchild)+SiCount1(T->rchild);
