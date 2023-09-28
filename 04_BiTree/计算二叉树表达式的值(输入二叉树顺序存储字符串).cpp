@@ -1,4 +1,3 @@
-//compute函数正确，但是构造函数不正确，无法使用
 #include <iostream>
 #include <stack>
 #include <string>
