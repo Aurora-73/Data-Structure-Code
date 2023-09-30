@@ -5,9 +5,9 @@ const int MaxSize = 100; // 设置最大数组
 
 void BiBubbleSort(int A[], int n) {
     int temp, flag = 1,low = 0,high = n - 1;
-    while(low < high && flag){
+    while(low < high && flag) {
         flag = 0;
-        for (int i = high ; i > low ; i--){
+        for (int i = high ; i > low ; i--) {
             if (A[i- 1] > A[i]) {
                 temp = A[i];
                 A[i] = A[i - 1];
@@ -16,8 +16,12 @@ void BiBubbleSort(int A[], int n) {
             }
         }
         low++;
+        for (int i = 0; i < n; i++) {
+            std::cout << A[i] << " ";
+        }
+        std::cout << (!flag ? "\n本轮未移动过" : "") << std::endl;
         if(!flag)    return;
-        for (int i = low ; i < high ; i++){
+        for (int i = low ; i < high ; i++) {
             if (A[i] > A[i + 1]) {
                 temp = A[i];
                 A[i] = A[i + 1];
@@ -26,6 +30,10 @@ void BiBubbleSort(int A[], int n) {
             }
         }
         high--;
+        for (int i = 0; i < n; i++) {
+            std::cout << A[i] << " ";
+        }
+        std::cout << (!flag ? "\n本轮未移动过" : "") << std::endl;
         if(!flag)    return;
     }
 }//这个是标准的双向冒泡排序
@@ -72,7 +80,7 @@ int main() {
     std::cout << "请输入以逗号分隔的数字: ";
     std::getline(std::cin, input);
 
-    int A[MaxSize]={0};
+    int A[MaxSize]= {0};
     int count = 0;
 
     std::istringstream ss(input);
@@ -96,11 +104,11 @@ int main() {
         std::cout << A[i] << " ";
     }
     std::cout << std::endl;
-    std::cout << "冒泡排序过程为: \n";
+    std::cout << "双向冒泡排序过程为: \n";
     // 使用插入排序对数组进行排序
     BiBubbleSort(A, count);
 
-    std::cout << "冒泡排序结果为 \n";
+    std::cout << "双向冒泡排序结果为 \n";
     for (int i = 0; i < count; i++) {
         std::cout << A[i] << " ";
     }
@@ -108,4 +116,3 @@ int main() {
 
     return 0;
 }
-    
