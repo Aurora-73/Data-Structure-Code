@@ -6,9 +6,14 @@ const int MaxSize = 100; // 设置最大数组大小
 void InsertSort(int A[], int n) {
     for (int i = 1; i < n; i++) {
         int temp = A[i], j = i - 1;
-        for (; j >= 0 && A[j] > temp; j--) 
+        for (; j >= 0 && A[j] > temp; j--)
             A[j + 1] = A[j];
         A[j + 1] = temp;
+        for (int i = 0; i < n; i++) {
+            std::cout << A[i] << " ";
+        }
+        std::cout << std::endl;
+
     }
 }
 
@@ -37,17 +42,11 @@ int main() {
             break;
         }
     }
-
-    std::cout << "原始数组A: ";
-    for (int i = 0; i < count; i++) {
-        std::cout << A[i] << " ";
-    }
-    std::cout << std::endl;
-
+    std::cout << "插入排序过程为: \n";
     // 使用插入排序对数组进行排序
     InsertSort(A, count);
 
-    std::cout << "排序后的数组A: ";
+    std::cout << "插入排序结果为 \n";
     for (int i = 0; i < count; i++) {
         std::cout << A[i] << " ";
     }

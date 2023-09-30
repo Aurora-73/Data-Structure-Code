@@ -14,7 +14,7 @@ void RearInsert(LinkList &L) {
     int x;
     while(true) {
         scanf("%d",&x);
-        if(x==9999)
+        if(x==-1)
             break;
         s = (LNode *)malloc(sizeof(LNode));
         s -> data = x;
@@ -24,34 +24,30 @@ void RearInsert(LinkList &L) {
     p -> next = NULL;
 }
 
-void InsertSort(LinkList &L) {
-    if(!L || !L->next)    return;
-    LNode *pre,*p,*q =L->next->next,*r,*f;
-    printf("%d\n", L->next->data);
-    L->next -> next = NULL;//断链应该在循环外面
-    while(q) {
-        pre = L;
-        p = L-> next;
-        while(p && p->data < q-> data) {
+void SelectSort(LinkList  &L) {
+    LNode *p,*pre,*maxp,*maxpre,*r;
+    r = L;//r是有序部分的最后一个
+    while(r->next) {
+        maxpre = pre = r;
+        maxp = p = r->next;
+        while(p) {
+            if(p->data > maxp->data) {
+                maxp = p;
+                maxpre = pre;
+            }
             pre = p;
             p = p->next;
         }
-        r = q -> next;
-        q -> next = p;
-        pre -> next = q;
-        q = r;
-        f = L -> next;
-        while (f != NULL) {
-            printf("%d ", f->data);
-            f = f->next;
-        }
-        printf("\n");
+        maxpre->next = maxp->next;
+        maxp->next = L->next;
+        L->next = maxp;
+        if(r == L)    r = maxp;
     }
 }
 
 int main() {
     LinkList L;
-    printf("请输入数字，输入9999表示结束：\n");
+    printf("请输入正数，输入-1表示结束：\n");
     RearInsert(L);
 
     // 打印链表元素
@@ -61,17 +57,13 @@ int main() {
         p = p->next;
     }
     printf("\n");
-    printf("插入排序过程为\n");
-    InsertSort(L);
-    printf("插入排序结果为\n");
-
-    p = L -> next;
+    SelectSort(L);
+    p = L->next;
     while (p != NULL) {
         printf("%d ", p->data);
         p = p->next;
     }
     printf("\n");
-
     // 释放链表内存
     while (L != NULL) {
         p = L;

@@ -11,7 +11,7 @@ void InsertSort(int A[],int n) {
         for(j = i - 1 ; A[j] > A[0] ; j--)
             A[j+1] = A[j];
         A[j+1] = A[0];
-        for(int i = 0;i <10 ;i++)
+        for(int i = 1;i <= n;i++)
             std::cout << A[i] << " ";
             std::cout << std::endl;
         }
@@ -41,6 +41,7 @@ int main() {
         }
     }
     A[0] = count;
+    std::cout << "插入排序过程为：" << std::endl;
     InsertSort(A,A[0]);
     // 打印存储在数组中的数据
     std::cout << "插入排序结果为：" << std::endl;
