@@ -4,8 +4,8 @@
 const int MaxSize = 100; // 设置最大数组大小
 
 void BubbleSort(int A[], int n) {
-    int temp, flag = 0;
-    for (int i = 0; i < n; i++) {
+    int temp, flag;
+    for (int i = 0; i < n - 1; i++) {
         flag = 1;
         for (int j = n - 1; j > i; j--) {
             if (A[j - 1] > A[j]) {
