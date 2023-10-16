@@ -8,17 +8,16 @@ struct LNode {
 typedef LNode* LinkList;
 
 
-void Del_Min(LinkList &L){
-    LNode *p = L->next,*prior = L;
-    int min = L->next -> data;
-    while(p->next){
-        if(p->next->data < min){
-        min = p->next->data;
-        prior = p;
-        }
+void Del_Min(LinkList &L) {
+    LNode *p = L->next,*pre = L;
+    while(p->next) {
+        if(p->next->data < pre->next->data)
+            pre = p;
         p = p -> next;
     }
-    prior -> next = prior -> next -> next;
+    p = pre->next;
+    pre -> next = p -> next;
+    delete p;
 }
 
 // 创建单链表函数
@@ -61,7 +60,7 @@ int main() {
     Del_Min(myList);
     std::cout << "处理后的链表：" << std::endl;
     PrintList(myList);
-    
+
     // 释放链表内存
     while (myList != NULL) {
         LNode* temp = myList;
