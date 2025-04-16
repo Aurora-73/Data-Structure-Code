@@ -1,44 +1,35 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <string>
 
-#define MaxSize 100
+using namespace std;
 
-typedef struct {
-    char ch[MaxSize];
-    int length;
-} SString;
-
-int Index(SString S, SString T){
+int Index(string S, string T){
     int i = 1, j = 1, k = 1; 
-    while(i <= S.length && j <= T.length){
-        if(S.ch[i] == T.ch[j]){
+    while(i <= S.length() && j <= T.length()){
+        if(S[i] == T[j]){
             i++;  j++;
         }else{
             i = k + 1; j = 1; k++;
         }
     }
-    if(j > T.length)    return k;
-    return 0;
+    return j > T.length() ? k : 0;
 }
 
 
 int main() {
-    SString S, T;
+    string S, T;
     
-    printf("请输入主串\n");
-    scanf("%s", S.ch + 1); // Read the main string
-    S.length = strlen(S.ch + 1);
-    
-    printf("请输入模式串\n");
-    scanf("%s", T.ch + 1); // Read the pattern string
-    T.length = strlen(T.ch + 1);
+    cout << "请输入主串" << endl;
+    cin >> S; // Read the main string
+    cout << "请输入模式串" << endl;
+    cin >> T; // Read the pattern string
     
     int result = Index(S, T);
     
     if (result > 0) {
-        printf("模式串的位置为: %d\n", result);
+        cout << "模式串的位置为: " << result << endl;
     } else {
-        printf("主串中没有模式串\n");
+        cout << "主串中没有模式串" << endl;
     }
     
     return 0;
